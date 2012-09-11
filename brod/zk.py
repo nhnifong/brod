@@ -25,11 +25,8 @@ from brod.base import ConnectionFailure, FetchResult, KafkaError, OffsetOutOfRan
 from brod.simple import SimpleConsumer
 from brod.blocking import Kafka
 
+logging.basicConfig(filename='/var/log/luckysort/brod.log',level=logging.DEBUG)
 log = logging.getLogger('brod.zk')
-hdlr = logging.FileHandler('/var/log/luckysort/brod.log')
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-log.addHandler(hdlr) 
 log.setLevel(logging.DEBUG)
 
 class NoAvailablePartitionsError(KafkaError): pass
